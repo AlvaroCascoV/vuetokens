@@ -38,6 +38,7 @@
 </template>
 
 <script>
+	import Global from "@/Global";
 	import ServiceEmpleados from "@/services/ServiceEmpleados";
 	let service = new ServiceEmpleados();
 	export default {
@@ -48,7 +49,11 @@
 			};
 		},
 		mounted() {
-			this.getSubs();
+			if (Global.token === "") {
+				this.$router.push("/login");
+			} else {
+				this.getSubs();
+			}
 		},
 		methods: {
 			getSubs() {

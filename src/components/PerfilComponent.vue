@@ -40,6 +40,7 @@
 </template>
 
 <script>
+	import Global from "@/Global";
 	import ServiceEmpleados from "@/services/ServiceEmpleados";
 	let service = new ServiceEmpleados();
 	export default {
@@ -50,7 +51,11 @@
 			};
 		},
 		mounted() {
-			this.getPerfil();
+			if (Global.token === "") {
+				this.$router.push("/login");
+			} else {
+				this.getPerfil();
+			}
 		},
 		methods: {
 			getPerfil() {

@@ -11,4 +11,17 @@ export default class ServiceEmpleados {
             })
         })
     }
+
+    getUsuario() {
+        return new Promise(function (resolve) {
+            let request = "api/Empleados/perfilempleado"
+            let url = Global.urlApiEmpleados + request
+            let usuario = {}
+            axios.get(url, { headers: { Authorization: "Bearer " + Global.token } }).then(response => {
+                usuario = response.data
+                console.log(response)
+                resolve(usuario)
+            })
+        })
+    }
 }

@@ -1,5 +1,5 @@
 var Global = {
     urlApiEmpleados: 'https://apiempleadoscoreoauth.azurewebsites.net/',
-    token: ""
+    token: "",
 }
 export default Global

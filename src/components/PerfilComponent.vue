@@ -25,7 +25,7 @@
 						<li class="list-group-item">
 							<strong>Salario:</strong>
 							<span class="text-success fw-bold ms-2">
-								{{ empleado.salario }} €
+								{{ formatCurrency(empleado.salario) }}
 							</span>
 						</li>
 						<li class="list-group-item" v-if="empleado.director != 0">
@@ -57,6 +57,15 @@
 				service.getUsuario().then((result) => {
 					this.empleado = result;
 				});
+			},
+			formatCurrency(value) {
+				if (value === null || value === undefined || value === "") return "";
+				const num = Number(value);
+				if (Number.isNaN(num)) return value;
+				return new Intl.NumberFormat("es-ES", {
+					style: "currency",
+					currency: "EUR",
+				}).format(num);
 			},
 		},
 	};

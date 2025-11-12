@@ -19,8 +19,19 @@ export default class ServiceEmpleados {
             let usuario = {}
             axios.get(url, { headers: { Authorization: "Bearer " + Global.token } }).then(response => {
                 usuario = response.data
-                console.log(response)
                 resolve(usuario)
+            })
+        })
+    }
+
+    getSubordinados() {
+        return new Promise(function (resolve) {
+            let request = "api/Empleados/subordinados"
+            let url = Global.urlApiEmpleados + request
+            let subordinados = []
+            axios.get(url, { headers: { Authorization: "Bearer " + Global.token } }).then(response => {
+                subordinados = response.data
+                resolve(subordinados)
             })
         })
     }

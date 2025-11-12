@@ -62,7 +62,6 @@
 			login() {
 				service.login(this.loginInfo).then((result) => {
 					Global.token = result.response;
-					console.log("token: " + Global.token);
 					this.$router.push("/perfil");
 				});
 			},
